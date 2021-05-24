@@ -1,5 +1,8 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { CreateUserDto, UpdateUserDto } from '../dtos/users.dto';
 
+@ApiTags('users')
 @Controller('users')
 export class UsersController {
 
@@ -9,6 +12,9 @@ export class UsersController {
     }
 
     @Get(':id')
+    @ApiOperation({
+        summary: 'search user by id'
+    })
     findById( @Param('id') id:number ):any{
         return `con id ${id}`;
     }
@@ -19,7 +25,7 @@ export class UsersController {
     }
 
     @Put(':id')
-    update(@Param('id') id: string, @Body() updateProduct: UpdateUserDto) {
+    update(@Param('id') id: string, @Body() updateUser: UpdateUserDto) {
         return `This action updates a #${id} cat`;
     }
 
