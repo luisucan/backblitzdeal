@@ -5,9 +5,10 @@ import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
 import { ConfigModule } from '@nestjs/config';
 import { enviroments } from './enviroments';
+import { DatabaseModule } from './database/database.module';
+
 import config from './config';
 import * as Joi from 'joi';
-
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -21,7 +22,7 @@ import * as Joi from 'joi';
       })
     }),
     UsersModule, 
-    ProductsModule],
+    ProductsModule, DatabaseModule],
   controllers: [AppController],
   providers: [AppService],
 })
